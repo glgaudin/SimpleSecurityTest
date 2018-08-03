@@ -8,6 +8,8 @@ import org.simplesecurity.security.SecuredUserAuthority;
 
 public class User implements SecuredUser {
 
+	private Integer id;
+	
 	private String firstName;
 
 	private String lastName;
@@ -62,11 +64,12 @@ public class User implements SecuredUser {
 
 	@Override
 	public Integer getId() {
-		return null;
+		return id;
 	}
 
 	@Override
 	public void setId(Integer id) {
+		this.id=id;
 	}
 
 	@Override
