@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.simplesecurity.security.annotation.Secure;
 import org.simplesecurity.security.reponse.TokenValidationResponse;
 import org.simplesecurity.security.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class TestController {
 	 * @param token
 	 * @return
 	 */
+	@Secure
 	@RequestMapping(value="test", method=RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> getTestStuff(HttpServletResponse httpResponse, 
 			@RequestHeader(value=HEADER_SECURITY_TOKEN) String token) {
