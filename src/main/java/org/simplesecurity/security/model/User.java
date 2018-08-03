@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.simplesecurity.security.SecuredUser;
-import org.simplesecurity.security.SecuredUserAuthority;
+import org.simplesecurity.security.SecuredUserPermission;
 
 public class User implements SecuredUser {
 
@@ -20,7 +20,7 @@ public class User implements SecuredUser {
 
 	private String password;
 	
-	private Set<SecuredUserAuthority> userAuthorities = new HashSet<>();
+	private Set<SecuredUserPermission> userAuthorities = new HashSet<>();
 	
 	public String getFirstName() {
 		return firstName;
@@ -73,12 +73,12 @@ public class User implements SecuredUser {
 	}
 
 	@Override
-	public Set<SecuredUserAuthority> getUserAuthorities() {
+	public Set<SecuredUserPermission> getUserPermissions() {
 		return userAuthorities;
 	}
 
 	@Override
-	public void setUserAuthorities(Set<SecuredUserAuthority> userAuthorities) {
+	public void setUserAuthorities(Set<SecuredUserPermission> userAuthorities) {
 		this.userAuthorities = userAuthorities;
 	}
 }
