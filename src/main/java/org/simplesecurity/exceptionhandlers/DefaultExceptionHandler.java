@@ -1,0 +1,28 @@
+package org.simplesecurity.exceptionhandlers;
+
+import org.apache.log4j.Logger;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+
+/**
+ * 
+ * Handles all exception that do not have a specific exception handler
+ *
+ */
+@ControllerAdvice
+@Order(Ordered.LOWEST_PRECEDENCE)
+public class DefaultExceptionHandler extends AbstractExceptionHandler {
+
+	private final static Logger logger = Logger.getLogger(DefaultExceptionHandler.class);
+
+    @ExceptionHandler(value = { Exception.class })
+    protected ResponseEntity<?> handleConflict(Exception ex, WebRequest request) {
+    	logger.error("Default error", ex);
+		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ERROR_PREFIX + ex.getMessage()) ,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}	

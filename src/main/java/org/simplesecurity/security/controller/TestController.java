@@ -1,11 +1,13 @@
 package org.simplesecurity.security.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.simplesecurity.security.annotation.Secure;
+import org.simplesecurity.security.annotation.HasPermission;
+import org.simplesecurity.security.annotation.ValidateToken;
 import org.simplesecurity.security.reponse.TokenValidationResponse;
 import org.simplesecurity.security.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @PropertySource("classpath:simplesecurity.properties")
 @RequestMapping("/")
-public class TestController {
+public class TestController implements Serializable {
 
+	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
+	
 	static final String HEADER_SECURITY_TOKEN = "X-Token";
 
 	@Autowired
@@ -57,7 +61,7 @@ public class TestController {
 	 * @param token
 	 * @return
 	 */
-	@Secure
+	@ValidateToken(permissions="WRITE")
 	@RequestMapping(value="test", method=RequestMethod.GET)
 	public @ResponseBody ResponseEntity<?> getTestStuff(HttpServletResponse httpResponse, 
 			@RequestHeader(value=HEADER_SECURITY_TOKEN) String token) {
