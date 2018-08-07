@@ -23,6 +23,6 @@ public class NullPointerExceptionHandler extends AbstractExceptionHandler {
     @ExceptionHandler(value = { NullPointerException.class })
     protected ResponseEntity<?> handleConflict(Exception ex, WebRequest request) {
     	logger.error("Security error", ex);
-		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ERROR_PREFIX + "Required information was not provided or available") ,HttpStatus.FORBIDDEN);
+		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ERROR_PREFIX + "Required information was not provided or available") ,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }	

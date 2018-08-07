@@ -10,7 +10,7 @@ import org.simplesecurity.security.model.UserPermission;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SecurityServiceImpl extends AbstractSecurityService {
+public class SecurityServiceImpl extends AbstractSimpleSecurityService {
 	
 	private static Map<Integer, User> users = new HashMap<>();
 
