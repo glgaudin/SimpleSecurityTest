@@ -78,7 +78,7 @@ public class User implements SecuredUser {
 	}
 
 	@Override
-	public void setUserAuthorities(Set<SecuredUserPermission> userAuthorities) {
-		this.userAuthorities = userAuthorities;
+	public void setUserPermissions(Set<? extends SecuredUserPermission> userPermissions) {
+		this.userAuthorities = (Set<SecuredUserPermission>)userPermissions;
 	}
 }
