@@ -77,6 +77,7 @@ public class User implements SecuredUser {
 		return userAuthorities;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setUserPermissions(Set<? extends SecuredUserPermission> userPermissions) {
 		this.userAuthorities = (Set<SecuredUserPermission>)userPermissions;

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.simplesecurity.security.annotation.HasPermission;
 import org.simplesecurity.security.annotation.ValidateToken;
 import org.simplesecurity.security.reponse.TokenValidationResponse;
 import org.simplesecurity.security.service.SecurityService;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class TestController implements Serializable {
 
-	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 	
 	static final String HEADER_SECURITY_TOKEN = "X-Token";

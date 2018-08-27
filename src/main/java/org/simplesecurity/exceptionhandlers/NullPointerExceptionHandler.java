@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 
 /**
  * 
- * Handles the AccessDeniedException
+ * Handles the NullPointerException
  *
  */
 @ControllerAdvice
@@ -22,7 +22,7 @@ public class NullPointerExceptionHandler extends AbstractExceptionHandler {
 	
     @ExceptionHandler(value = { NullPointerException.class })
     protected ResponseEntity<?> handleConflict(Exception ex, WebRequest request) {
-    	logger.error("Security error", ex);
+    	logger.error("Null error", ex);
 		return new ResponseEntity<ErrorResponse>(new ErrorResponse(ERROR_PREFIX + "Required information was not provided or available") ,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }	
