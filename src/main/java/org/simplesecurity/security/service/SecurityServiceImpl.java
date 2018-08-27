@@ -20,8 +20,8 @@ public class SecurityServiceImpl extends AbstractSimpleSecurityService {
 	}
 	
 	@Override
-	public SecuredUser getUser(String id) {
-		return users.get(Integer.parseInt(id));
+	public SecuredUser getUser(Integer id) {
+		return users.get(id);
 	}
 
 	@Override
